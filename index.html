@@ -53,11 +53,15 @@
 
     .product img {
       width: 100%;
+      max-width: 260px;
       height: 180px;
       object-fit: cover;
       border-radius: 6px;
       margin-bottom: 1rem;
       background-color: #e0e0e0;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .product h2 {
@@ -113,14 +117,26 @@
       color: #777;
       margin-top: 3rem;
     }
+
+    @media (max-width: 600px) {
+      .products {
+        grid-template-columns: 1fr;
+      }
+      .product img {
+        max-width: 100%;
+        height: 140px;
+      }
+      .product {
+        padding: 0.7rem;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Joyce's Aloe Vera Wellness Shop</h1>
-    <h2>Discover the Power of Aloe Vera</h2>
-    <p>Premium products for natural health & radiant skin.</p>
+    <h1>Forever Living Shop</h1>
+    <p>Premium products for natural health & radiant skin from Forever Living.</p>
   </header>
 
   <main>
@@ -172,7 +188,7 @@
 
       <!-- Product 6 -->
       <div class="product" data-id="6" data-name="Forever Active Boost" data-price="101.22">
-        <img src="imagesAloe/Screenshot_27-7-2025_155246_.jpeg" alt=Forever Active Boost" onerror="this.style.display='none'">
+        <img src="imagesAloe/Screenshot_27-7-2025_155246_.jpeg" alt="Forever Active Boost" onerror="this.style.display='none'">
         <h2>Forever Active Boost</h2>
         <p>Quick energy Boost without long term crash, No sugar, No Carbs.</p>
         <p><strong>Price:</strong> R101.22</p>
@@ -247,8 +263,13 @@
     <section id="cart">
       <h2>Your Cart</h2>
       <ul id="cart-items"></ul>
-      <p><strong>Total:</strong> $<span id="total">0.00</span></p>
+      <p><strong>Total:</strong> R<span id="total">0.00</span></p>
       <button onclick="checkout()">Checkout</button>
+      <!-- Add this form for PHP integration -->
+      <form id="payfastForm" action="payfast.php" method="POST" style="display:none;">
+        <input type="hidden" name="amount" id="pf_amount">
+        <input type="hidden" name="item_name" id="pf_item_name">
+      </form>
     </section>
   </main>
 
@@ -257,9 +278,9 @@
   </div>
 
   <!-- WhatsApp button-->
-   <a class="whatsapp-button" href="https://wa.me/27660487939?text=Hi!%20I%20placed%20an%20order%20on%20your%20Aloe%20Vera%20shop." target="_blank">
-    
-   </a>
+  <a class="whatsapp-button" href="https://wa.me/27660487939?text=Hi!%20I%20placed%20an%20order%20on%20your%20Aloe%20Vera%20shop." target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:48px;height:48px;position:fixed;bottom:24px;right:24px;z-index:99;">
+  </a>
 
   <script>
     let cart = [];
@@ -269,7 +290,6 @@
       const id = product.dataset.id;
       const name = product.dataset.name;
       const price = parseFloat(product.dataset.price);
-
       cart.push({ id, name, price });
       renderCart();
     }
@@ -297,11 +317,14 @@
       }
 
       let total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+      let itemNames = cart.map(item => item.name).join(", ");
 
-      // Redirect to PayFast(Replace with your own link)
-      alert("Redirecting to secure payment...");
-      window.location.href = "https://buy.stripe.com/test_eVa3dVblX2Sxd8M4gh"; // Replace with your PayFast link
+      // Fill and submit the hidden PHP form
+      document.getElementById('pf_amount').value = total;
+      document.getElementById('pf_item_name').value = itemNames;
+      document.getElementById('payfastForm').submit();
     }
   </script>
 </body>
 </html>
+
