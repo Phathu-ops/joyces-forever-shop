@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Joyce's Aloe Vera Wellness Shop</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+      color: #333;
+    }
+
+    header {
+      background: #64be8c;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    header p {
+      margin: 0.5rem 0 0;
+    }
+
+    main {
+      padding: 1rem;
+      max-width: 960px;
+      margin: auto;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .product {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      background-color: #e0e0e0;
+    }
+
+    .product h2 {
+      font-size: 1.2rem;
+      margin: 0 0 0.5rem;
+    }
+
+    .product p {
+      font-size: 0.95rem;
+      margin: 0.5rem 0;
+    }
+
+    button {
+      background-color: #64be8c;
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 4px;
+      margin-top: auto;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    button:hover {
+      background-color: #4ea579;
+    }
+
+    #cart {
+      margin-top: 2rem;
+      background: white;
+      padding: 1rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    #cart h2 {
+      margin-top: 0;
+    }
+
+    #cart-items {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    #cart-items li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Joyce's Aloe Vera Wellness Shop</h1>
+    <h2>Discover the Power of Aloe Vera</h2>
+    <p>Premium products for natural health & radiant skin.</p>
+  </header>
+
+  <main>
+    <section class="products">
+      <!-- Product 1 -->
+      <div class="product" data-id="1" data-name="Aloe Vera Gel" data-price="561.46">
+        <img src="imagesAloe/pure aloe vera gel.jpg" alt="Aloe Vera Gel" onerror="this.style.display='none'">
+        <h2> Pure Aloe Vera Gel</h2>
+        <p>Supports digestion and overall wellness. 1L bottle of pure aloe goodness.</p>
+        <p><strong>Price:</strong> R561.46</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product" data-id="2" data-name="Aloe Vera Toothgel" data-price="165.04">
+        <img src="imagesAloe/Screenshot_27-7-2025_155549_.jpeg" alt="Aloe Vera Toothgel" onerror="this.style.display='none'">
+        <h2>Aloe Vera Toothgel</h2>
+        <p>Freshness Last Longer, Supports Tooth Aches, Burns, Cuts and Scratches, Sore Throat And Tonsils, Bleeding Gums.</p>
+        <p><strong>Price:</strong> R165.04</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product" data-id="3" data-name="Aloe Vera Juice" data-price="561.46">
+        <img src="imagesAloe/Screenshot_27-7-2025_15507_.jpeg" alt="Aloe Vera Juice" onerror="this.style.display='none'">
+        <h2>Aloe Vera Berry Nectar</h2>
+        <p>Refreshing aloe drink packed with natural antioxidants and nutrients.</p>
+        <p><strong>Price:</strong> R561.46</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product" data-id="4" data-name="Aloe Vera Peach Nectar" data-price="547.30">
+        <img src="imagesAloe/Screenshot_27-7-2025_155145_.jpeg" alt="Aloe Vera Peach Nectar" onerror="this.style.display='none'">
+        <h2>Aloe Vera Peach Nectar</h2>
+        <p>Promotes and supports skin problems, stomach Ulcers and Indigestion.</p>
+        <p><strong>Price:</strong> R547.30</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product" data-id="5" data-name="Aloe Blossom Herbal Tea" data-price="378.67">
+        <img src="imagesAloe/Screenshot_27-7-2025_155234_.jpeg" alt="Aloe Blossom Herbal Tea" onerror="this.style.display='none'">
+        <h2>Aloe Blossom Herbal Tea</h2>
+        <p>Refreshing Tea, Relieve Stress, Improves Digestion.</p>
+        <p><strong>Price:</strong> R378.67</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="product" data-id="6" data-name="Forever Active Boost" data-price="101.22">
+        <img src="imagesAloe/Screenshot_27-7-2025_155246_.jpeg" alt=Forever Active Boost" onerror="this.style.display='none'">
+        <h2>Forever Active Boost</h2>
+        <p>Quick energy Boost without long term crash, No sugar, No Carbs.</p>
+        <p><strong>Price:</strong> R101.22</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="product" data-id="7" data-name="Forever Kids Chewable Multivitamins" data-price="319.72">
+        <img src="imagesAloe/Screenshot_27-7-2025_155332_.jpeg" alt="Forever Kids Chewable Multivitamins" onerror="this.style.display='none'">
+        <h2>Forever Kids Chewable Multivitamins</h2>
+        <p>Gives Children a Better Appetite, Helps Sleep Better, Nutrition And Minerals.</p>
+        <p><strong>Price:</strong> R319.72</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="product" data-id="8" data-name="Arctic Sea-Omga-3" data-price="638.59">
+        <img src="imagesAloe/Screenshot_27-7-2025_155353_.jpeg" alt="Arctic Sea-Omga-3" onerror="this.style.display='none'">
+        <h2>Arctic Sea-Omga-3</h2>
+        <p>Good For Skin, Relieves Body Pains, Supports Heart problems, Good For Cardiovascular System.</p>
+        <p><strong>Price:</strong> R638.59</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+
+      <!-- Product 9 -->
+      <div class="product" data-id="9" data-name="ARGI+" data-price="1612.74">
+        <img src="imagesAloe/Screenshot_27-7-2025_155415_.jpeg" alt="ARGI+" onerror="this.style.display='none'">
+        <h2>ARGI+</h2>
+        <p>Help Maintain a Healthy Blood Pressure and Cardiovascular System, Increases Energy And Strength.</p>
+        <p><strong>Price:</strong> R1612.74</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+
+      <!-- Product 10 -->
+      <div class="product" data-id="10" data-name="Aloe Vera Gelly" data-price="320.56">
+        <img src="imagesAloe/Screenshot_27-7-2025_15552_.jpeg" alt="Aloe Vera Gelly" onerror="this.style.display='none'">
+        <h2>Aloe Vera Gelly</h2>
+        <p>Supports Burns, Skin Cancer, Cuts, Scratches And Wounds, Nappy Rash.</p>
+        <p><strong>Price:</strong> R320.56</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+
+      <!-- Product 11 -->
+      <div class="product" data-id="11" data-name="Forever Aloe Heat Lotion" data-price="320.56">
+        <img src="imagesAloe/Screenshot_27-7-2025_155523_.jpeg" alt="Forever Aloe Heat Lotion" onerror="this.style.display='none'">
+        <h2>Forever Aloe Heat Lotion</h2>
+        <p>Soothes tired muscles, Deep massage, Warming agents, Try using before exercise.</p>
+        <p><strong>Price:</strong> R320.56</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+
+      <!-- Product 12 -->
+      <div class="product" data-id="12" data-name="Aloe Ever-Shield" data-price="154.47">
+        <img src="imagesAloe/Screenshot_27-7-2025_155559_.jpeg" alt="Aloe Ever-Shield" onerror="this.style.display='none'">
+        <h2>Aloe Ever-Shield</h2>
+        <p>Soften & Close Cracked Heels, Protect Against Underarm Smell, Keep Your Underarm Dry And Fresh.</p>
+        <p><strong>Price:</strong> R154.47</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+
+      <!-- Product 13 -->
+      <div class="product" data-id="13" data-name="Aloe Avocado Soap" data-price="143.27">
+        <img src="imagesAloe/Screenshot_27-7-2025_155615_.jpeg" alt="Aloe Avocado Soap" onerror="this.style.display='none'">
+        <h2>Aloe Avocado Soap</h2>
+        <p>Cleans thoroughly without drying the skin, Refreshing soap for face, body and hands, Suitablefor dry and oily skin.</p>
+        <p><strong>Price:</strong> R143.27</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+    </section>
+
+    <!-- Cart -->
+    <section id="cart">
+      <h2>Your Cart</h2>
+      <ul id="cart-items"></ul>
+      <p><strong>Total:</strong> $<span id="total">0.00</span></p>
+      <button onclick="checkout()">Checkout</button>
+    </section>
+  </main>
+
+  <div class="footer">
+    &copy; 2025 Aloe Wellness. All rights reserved.
+  </div>
+
+  <!-- WhatsApp button-->
+   <a class="whatsapp-button" href="https://wa.me/27660487939?text=Hi!%20I%20placed%20an%20order%20on%20your%20Aloe%20Vera%20shop." target="_blank">
+    
+   </a>
+
+  <script>
+    let cart = [];
+
+    function addToCart(button) {
+      const product = button.parentElement;
+      const id = product.dataset.id;
+      const name = product.dataset.name;
+      const price = parseFloat(product.dataset.price);
+
+      cart.push({ id, name, price });
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartItems = document.getElementById("cart-items");
+      const totalSpan = document.getElementById("total");
+      cartItems.innerHTML = "";
+      let total = 0;
+
+      cart.forEach((item) => {
+        total += item.price;
+        const li = document.createElement("li");
+        li.textContent = `${item.name} - R${item.price.toFixed(2)}`;
+        cartItems.appendChild(li);
+      });
+
+      totalSpan.textContent = total.toFixed(2);
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+      let total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+
+      // Redirect to PayFast(Replace with your own link)
+      alert("Redirecting to secure payment...");
+      window.location.href = "https://buy.stripe.com/test_eVa3dVblX2Sxd8M4gh"; // Replace with your PayFast link
+    }
+  </script>
+</body>
+</html>
