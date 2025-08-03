@@ -1,6 +1,6 @@
 <?php
 // Toggle sandbox or live
-$is_live = false; // Set to true when going live
+$is_live = true; // Set to true when going live
 
 $merchant_id = $is_live ? "YOUR_LIVE_ID" : "10000100";
 $merchant_key = $is_live ? "YOUR_LIVE_KEY" : "46f0cd694581a";
