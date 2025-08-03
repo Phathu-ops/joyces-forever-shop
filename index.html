@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Joyce's Aloe Vera Wellness Shop</title>
+  <title>Forever Living Shop</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -265,11 +265,6 @@
       <ul id="cart-items"></ul>
       <p><strong>Total:</strong> R<span id="total">0.00</span></p>
       <button onclick="checkout()">Checkout</button>
-       <!-- Hidden form for PayFast POST -->
-      <form id="payfastForm" action="payfast.php" method="POST" style="display:none;">
-        <input type="hidden" name="amount" id="pf_amount">
-        <input type="hidden" name="item_name" id="pf_item_name">
-      </form>
     </section>
   </main>
 
@@ -319,11 +314,19 @@
       let total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
       let itemNames = cart.map(item => item.name).join(", ");
 
-      // Fill and submit the hidden PayFast form
-      document.getElementById('pf_amount').value = total;
-      document.getElementById('pf_item_name').value = itemNames;
-      document.getElementById('payfastForm').submit();
+      // Show banking details in a popup
+      alert(
+        "Thank you for your order!\n\n" +
+        "Please send the total amount (R" + total + ") to the following banking details:\n\n" +
+        "Bank: CAPITEC\n" +
+        "Account Name: Joyce\n" +
+        "Account Number: 1414566008\n" +
+        "Branch Code: 470010\n" +
+        "Reference: " + itemNames + "\n\n" +
+        "Once payment is made, please WhatsApp your proof of payment and name to 083 305 4259."
+      );
     }
   </script>
 </body>
 </html>
+
