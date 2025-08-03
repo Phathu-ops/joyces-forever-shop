@@ -265,7 +265,11 @@
       <ul id="cart-items"></ul>
       <p><strong>Total:</strong> R<span id="total">0.00</span></p>
       <button onclick="checkout()">Checkout</button>
-      <!-- Add this form for PHP integration -->
+       <!-- Hidden form for PayFast POST -->
+      <form id="payfastForm" action="payfast.php" method="POST" style="display:none;">
+        <input type="hidden" name="amount" id="pf_amount">
+        <input type="hidden" name="item_name" id="pf_item_name">
+      </form>
     </section>
   </main>
 
@@ -315,14 +319,11 @@
       let total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
       let itemNames = cart.map(item => item.name).join(", ");
 
-      // Fill and submit the hidden PHP form
-      //document.getElementById('pf_amount').value = total;
-      //document.getElementById('pf_item_name').value = itemNames;
-      //document.getElementById('payfastForm').submit();
+      // Fill and submit the hidden PayFast form
+      document.getElementById('pf_amount').value = total;
+      document.getElementById('pf_item_name').value = itemNames;
+      document.getElementById('payfastForm').submit();
     }
   </script>
 </body>
 </html>
-
-
-
